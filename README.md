@@ -8,7 +8,7 @@ We learn 10 sprints
 - Data Transformation
 - Data Visualization
 - Statistics
-- Intro to 'Classical' Machine Learning
+- Intro to `Classical` Machine Learning
 - Intro to Python
-- Essential Python for Data Analyst `Pandas`
+- Essential Python for Data Analyst with `Pandas`
 - Dashboard with Looker Studio, Tableau & PowerBI
