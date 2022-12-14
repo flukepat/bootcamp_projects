@@ -1,0 +1,140 @@
+# Pao Ying Chub
+  # users play unlimited times
+  # until users want to exit, print "Quit"
+  # Summary the results (win / loss / tie)
+
+print("Welcome to Pao Ying Shub Online!")
+print("What is your name?: ")
+username <- readLines("stdin", n=1)
+print(paste("Hi!", username))
+
+intro_function <- function() {
+
+  intro_again <- "No"
+  while(intro_again == "No") {
+    print("Introduction")
+    print("This game is the battle with our bot")
+    print("There are 3 choices to give you choose")
+    print("1. Hammer ✊")
+    print("2. Scissor ✌️")
+    print("3. Paper 🖐️")
+    print("Game rules")
+    print("Hammer wins scissor")
+    print("Scissor wins paper")
+    print("Paper wins hammer")
+    
+    print("Do you understand the game rules?")
+    print("Yes / No")
+    intro_again <- readLines("stdin", n=1)
+    }
+
+  play_again <- "Y"
+  result_win <- as.character()
+  score_win <- as.integer()
+  result_lose <- as.character()
+  score_lose <- as.integer()
+  result_draw <- as.character()
+  score_draw <- as.integer()
+  result <- as.character()
+  score <- as.integer()
+  
+  while(play_again == "Y") {
+    
+  runif(3,1,3)
+  sample(1:10,1)
+  print("press 'H', you choose hammer")
+  print("press 'S', you choose scissor")
+  print("press 'P', you choose paper")
+  
+  random_num <- sample(1:3, 1, replace=F)
+  (bot_action <- random_num)
+
+  player_action <- readLines("stdin", n=1)
+  if (player_action == "H" & bot_action == "1"){
+    print("You choose hammer & Bot choose hammer")
+    print("You draw bot!")
+    result_draw <- "draw"
+    score_draw <- 1
+    
+  } else 
+    if (player_action == "H" & bot_action == "2"){
+    print("You choose hammer & Bot chooses scissor")
+    print("You win bot!")
+    result_win <- "win"
+    score_win <- 1
+  } else
+    if (player_action == "H" & bot_action == "3"){
+    print("You choose hammer & Bot chooses paper")
+    print("You lose bot!")
+    result_lose <- "lose"
+    score_lose <- 1
+  } else 
+    if (player_action == "S" & bot_action == "1"){
+    print("You choose scissor & Bot chooses hammer")
+    print("You lose bot!")
+    result_lose <- "lose"
+    score_lose <- 1
+  } else 
+    if (player_action == "S" & bot_action == "2"){
+    print("You choose scissor & Bot chooses scissor")
+    print("You draw bot!")
+    result_draw <- "draw"
+    score_draw <- 1
+  } else 
+    if (player_action == "S" & bot_action == "3"){
+    print("You choose scissor & Bot chooses paper")
+    print("You win bot!")
+    result_win <- "win"
+    score_win <- 1    
+  } else 
+    if (player_action == "P" & bot_action == "1"){
+    print("You choose paper & Bot chooses hammer")
+    print("You win bot!")
+    result_win <- "win"
+    score_win <- 1  
+  } else 
+      if (player_action == "P" & bot_action == "2"){
+    print("You choose paper & Bot chooses scissor")
+    print("You lose bot!")
+    result_lose <- "lose"
+    score_lose <- 1    
+  } else 
+      if (player_action == "P" & bot_action == "3"){
+    print("You choose paper & Bot chooses paper")
+    print("You draw bot!")
+    result_draw <- "draw"
+    score_draw <- 1     
+  }   
+  print("If you want to play again, pls press 'Y'")
+  print("If you want to exit the game, pls press 'Q'")
+  play_again <- readLines("stdin", n=1)
+
+ res_win <- append(result_win, as.character(result_win))
+ sco_win <- append(score_win, as.integer(score_win))
+ res_lose <- append(result_lose, as.character(result_lose))
+ sco_lose <- append(score_lose, as.integer(score_lose))
+ res_draw <- append(result_draw, as.character(result_draw))
+ sco_draw <- append(score_draw, as.integer(score_draw))
+   
+  }
+
+  win_df <- data.frame(res_win,sco_win)
+  lose_df <- data.frame(res_lose,sco_lose)
+  draw_df <- data.frame(res_draw,sco_draw)
+ 
+ 
+  print("======== summary Score ========")
+  total_win <- sum(win_df$sco_win)
+  total_lose <- sum(lose_df$sco_lose)
+  total_draw <- sum(draw_df$sco_draw)
+  print("Your score is result :")
+  print(paste("You win ",total_win,"times"))
+  print(paste("You lose ",total_lose,"times"))
+  print(paste("You draw ",total_draw,"times"))
+
+
+  print("-------------------------------")
+#  print(paste("Total win = ",total_sum,"time(s)"))  
+  }
+
+intro_function()
